@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "axios": "^0.21.0",
+    "bulma": "^0.9.1",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-manifest": "^2.6.1",
@@ -16,9 +18,12 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-infinite-scroll-component": "^5.1.0"
   },
   "devDependencies": {
+    "http-proxy-middleware": "^1.0.6",
+    "netlify-lambda": "^2.0.2",
     "prettier": "2.1.2"
   },
   "keywords": [
@@ -27,9 +32,11 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
+    "build:lambda": "netlify-lambda build src/lambda",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
+    "start:lambda": "netlify-lambda serve src/lambda",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
