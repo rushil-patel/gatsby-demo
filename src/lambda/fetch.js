@@ -2,8 +2,8 @@ import axios from "axios"
 import config from "../../config"
 
 exports.handler = function(event, context, callback) {
-  const apiKey = config.apiKey
-  const apiSecret =  config.apiSecret
+  const apiKey = process.env.API_KEY || config.apiKey
+  const apiSecret =  process.env.API_SECRET || config.apiSecret
   const apiRoot = `https://${apiKey}:${apiSecret}@api.cloudinary.com/v1_1`
 
   const endpoint = `${apiRoot}/rushildev/resources/image`;
