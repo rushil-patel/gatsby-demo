@@ -21,7 +21,7 @@ const InfiniteImages = () => {
             const images = res.data.images.filter(img => !img.url.includes('heic'));
             console.log(images, res);
             Promise.all(images.map(img => {
-                return ImageLoader.fetchImage(img.url).then(async (blob) => {
+                return ImageLoader.fetchImage(img.secure_url).then(async (blob) => {
                     const compressedBlob = await imageCompression(blob, {
                         maxWidthOrHeight: 1000,
                         useWebWorker: false,
