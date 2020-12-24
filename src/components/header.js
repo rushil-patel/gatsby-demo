@@ -3,7 +3,12 @@ import React from "react"
 
 const Header = ({ siteTitle }) => (
   <header>
-    <nav className="navbar is-dark" style={{ marginBottom: "2em" }}>
+    <nav className="navbar is-light" style={{
+         "WebkitBackdropFilter": `blur(10px)`,
+         "backdropFilter": `blur(40px)`,
+         "backgroundColor": `rgb(255,255,255, 0.3)`
+       }}
+    >
       <div className="navbar-brand">
         <Link
           to="/"
@@ -11,9 +16,9 @@ const Header = ({ siteTitle }) => (
             marginLeft: "3em",
             padding: "10px",
           }}
-          className="has-text-white is-size-3"
+          className="has-text-light is-size-3"
         >
-          {siteTitle} 🐶
+          {siteTitle}
         </Link>
       </div>
       <div className="navbar-end" style={{ marginRight: "3em" }}>
@@ -23,7 +28,7 @@ const Header = ({ siteTitle }) => (
             style={{
               padding: "10px",
             }}
-            className="has-text-white"
+            className="has-text-light"
           >
             Home
           </Link>
@@ -32,7 +37,7 @@ const Header = ({ siteTitle }) => (
             style={{
               padding: "10px",
             }}
-            className="has-text-white"
+            className="has-text-light"
           >
             Gallery
           </Link>

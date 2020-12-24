@@ -2,9 +2,9 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = {
   siteMetadata: {
-    title: `Gastify`,
-    description: `Here lies a doggo Infinite scroll Image gallery built with Gatsby, Netlify Functions and the Unsplash API`,
-    author: `@gatsbyjs`,
+    title: `Rushil`,
+    description: `Rushil's digital estate`,
+    author: `@rushil`,
   },
   developMiddleware: app => {
     app.use(
@@ -16,6 +16,8 @@ module.exports = {
     )
   },
   plugins: [
+    'gatsby-plugin-workerize-loader',
+    'gatsby-plugin-sass',
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

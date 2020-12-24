@@ -1,36 +1,42 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React, {useEffect, useState} from "react"
 
-/*
- * This component is built using `gatsby-image` to automatically serve optimized
- * images with lazy loading and reduced file sizes. The image is loaded using a
- * `useStaticQuery`, which allows us to load the image from directly within this
- * component, rather than having to pass the image data down from pages.
- *
- * For more information, see the docs:
- * - `gatsby-image`: https://gatsby.dev/gatsby-image
- * - `useStaticQuery`: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
-const Image = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-
-  if (!data?.placeholderImage?.childImageSharp?.fluid) {
-    return <div>Picture not found</div>
+const getImageSizeClass = (width, height) => {
+  const ratio = width / height;
+  const TALL = 0.6, WIDE = 1.3;
+  // const SQUARE = 1.0,
+  if (ratio < TALL) {
+    return 'image-tall'
+  } else if (ratio > WIDE) {
+    return 'image-wide'
+  } else {
+    return 'image-square'
   }
+}
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+const Image = (props) => {
+  const { src, width, height } = props;
+  // const [objectUrl, setObjectUrl] = useState(null);
+  const sizeClassName = getImageSizeClass(width, height);
+  const imageClassName = 'image-item';
+
+  // useEffect( () => {
+  //   ImageLoader.fetchImage(src).then(async (blob) => {
+  //     //   const compressedBlob = await imageCompression(blob, {
+  //     //     maxWidthOrHeight: 1000,
+  //     //     useWebWorker: true,
+  //     //     exifOrientation: 1
+  //     // });
+  //     const compressedBlob = blob;
+  //     const url = URL.createObjectURL(compressedBlob);
+  //       setObjectUrl(url);
+  //     })
+  // }, [src, setObjectUrl])
+
+  return (
+      <div className={`${imageClassName} ${sizeClassName}`}>
+        <img src={src} />
+      </div>
+    );
 }
 
 export default Image
