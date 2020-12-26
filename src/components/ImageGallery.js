@@ -17,7 +17,7 @@ const ImageGallery = ({images, loading, fetchImages}) => {
                 {!loading ? images.map(image => {
                         return (
                             <React.Fragment key={image.public_id}>
-                                <Image src={image.url} width={image.width} height={image.height} />
+                                <Image src={image.secure_url} width={image.width} height={image.height} />
                             </React.Fragment>
                         )
                     }) : ""
