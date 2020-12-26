@@ -1,4 +1,6 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
+import { ImageLoader } from './workers';
+import imageCompression from 'browser-image-compression';
 
 const getImageSizeClass = (width, height) => {
   const ratio = width / height;
@@ -17,10 +19,27 @@ const Image = (props) => {
   const { src, width, height } = props;
   const sizeClassName = getImageSizeClass(width, height);
   const imageClassName = 'image-item';
+  const [url, setUrl] = useState(null);
+
+  useEffect(() => {
+    ImageLoader.fetchImage(src).then(async (blob) => {
+      const compressedBlob = await imageCompression(blob, {
+          maxWidthOrHeight: 1000,
+          useWebWorker: false,
+          exifOrientation: 1
+      }).catch(err => {
+          console.log(err);
+      });
+
+      const objectUrl = URL.createObjectURL(compressedBlob);
+      setUrl(objectUrl);
+    })
+  }, [src])
+
 
   return (
       <div className={`${imageClassName} ${sizeClassName}`}>
-        <img src={src} />
+        {!url ? 'loading' : <img src={url} />}
       </div>
     );
 }
