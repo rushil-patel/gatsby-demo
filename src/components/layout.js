@@ -30,7 +30,6 @@ const Layout = ({children}) => {
       <Header siteTitle={data.site.siteMetadata.title} />
       <div className={'has-background-light hero is-fullheight'}>
         <div className={'hero-body'} style={{
-          maxWidth: 900,
           padding: `0px 1.0875rem 1.45rem`,
           paddingTop: '10px',
           margin: '0px auto'

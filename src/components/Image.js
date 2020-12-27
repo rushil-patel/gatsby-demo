@@ -39,7 +39,7 @@ const Image = (props) => {
 
   return (
       <div className={`${imageClassName} ${sizeClassName}`}>
-        {!url ? 'loading' : <img src={url} />}
+        {!url ? null : <img src={url} />}
       </div>
     );
 }
