@@ -28,12 +28,12 @@ const Layout = ({children}) => {
       "outline": "none"
     }}>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div className={'has-background-light hero is-fullheight'} style={{padding: '20px'}}>
+      <div className={'has-background-light hero is-fullheight'}>
         <div className={'hero-body'} style={{
-          margin: `0 auto`,
           maxWidth: 900,
           padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
+          paddingTop: '10px',
+          margin: '0px auto'
         }}
         >
           <main>{children}</main>
